@@ -1,0 +1,13 @@
+.container-header {
+	flex-direction: row;
+	align-items: center;
+	position: relative;
+}
+
+.header-title {
+	text-align: center;
+	font-family: BebasNeueRegular;
+	font-size: 25px;
+	margin: 12px;
+	flex: 1;
+}

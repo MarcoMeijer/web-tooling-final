@@ -1,0 +1,55 @@
+@font-face {
+	font-family: "BebasNeueRegular";
+	src: url(BebasNeue-Regular.ttf) format("truetype");
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "MontserratRegular";
+	src: url(Montserrat-Regular.ttf) format("truetype");
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+.app {
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.root {
+	width: 100%;
+	height: 100%;
+}
+
+div {
+	display: flex;
+	flex-direction: column;
+}
+
+img {
+	image-rendering: pixelated;
+}
+
+body,
+html,
+#root {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	transition: all 0.25s linear;
+}
+
+body {
+	background: #fff;
+	color: #000;
+}
+
+body.dark-mode {
+	background: #000;
+	color: #fff;
+}

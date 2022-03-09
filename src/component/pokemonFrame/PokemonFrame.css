@@ -1,0 +1,14 @@
+.ditto {
+	width: 96px;
+	height: 96px;
+	filter: brightness(0);
+	opacity: 0.3;
+}
+
+.ditto-question {
+	font: 20px BebasNeueRegular;
+	position: absolute;
+	color: #fff;
+	top: 16px;
+	left: 43px;
+}
