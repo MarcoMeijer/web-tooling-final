@@ -1,0 +1,20 @@
+.share-button {
+	display: flex;
+	border: none;
+	flex-direction: row;
+	background-color: #6ad287;
+	border-radius: 5px;
+	padding: 5px;
+	flex: 1;
+	height: 60px;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.share-button p {
+	color: #ffffff;
+	font-family: BebasNeueRegular;
+	font-size: 25px;
+	margin: 10px;
+}

@@ -1,4 +1,5 @@
 import React from "react"
+import ShareButton from "../../component/button/ShareButton"
 import PopUpMenu from "../../component/popUpMenu/PopUpMenu"
 import { PokemonData } from "../../logic/PokemonData"
 
@@ -15,6 +16,13 @@ const WinPopUp = ({ pokemon, close }: WinPopUpProps) => {
 				style={{ width: 192, height: 192 }}
 			/>
 			<p>{pokemon.name} has been added to your pokédex!</p>
+			<div style={{ flexDirection: "row", alignSelf: "stretch", margin: 15 }}>
+				<ShareButton
+					onClick={() => {
+						return
+					}}
+				/>
+			</div>
 		</PopUpMenu>
 	)
 }
