@@ -2,11 +2,18 @@ import React from "react"
 import "./ShareButton.css"
 
 type ShareButtonProps = {
-	onClick: () => void
+	shareText: string
 }
 
-const ShareButton = ({ onClick }: ShareButtonProps) => (
-	<button className="share-button" onClick={onClick}>
+const ShareButton = ({ shareText }: ShareButtonProps) => (
+	<button
+		className="share-button"
+		onClick={async () => {
+			if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+				return navigator.clipboard.writeText(shareText)
+			return Promise.reject("The Clipboard API is not available.")
+		}}
+	>
 		<p>Share</p>
 		<svg
 			width="25"

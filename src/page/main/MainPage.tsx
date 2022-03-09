@@ -6,6 +6,7 @@ import NavigationBar from "../NavigationBar"
 import Pokedex from "../pokedex/Pokedex"
 import LosePopUp from "../popUps/LosePopUp"
 import WinPopUp from "../popUps/WinPopUp"
+import "./MainPage.css"
 
 const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	const [pokedexOpen, setPokedexOpen] = useState(false)
@@ -28,8 +29,6 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 		} else setWinPopUpOpen(true)
 	}
 
-	const imageSize = 96 * 5
-
 	return (
 		<div style={{ alignItems: "center" }}>
 			<div
@@ -51,26 +50,10 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 				<LosePopUp pokemon={pokemon} close={() => setLosePopUpOpen(false)} />
 			)}
 			<NavigationBar switchPokedexOpen={switchPokedexOpen} />
-			<img
-				src={pokemon?.sprites.front_default}
-				style={{
-					width: imageSize,
-					height: imageSize,
-					filter: health >= 2 ? "brightness(0)" : "",
-				}}
-			/>
+			<img className="pokemon-image" src={pokemon?.sprites.front_default} />
 			<PokeballBar healthLeft={health} />
 			<input
-				style={{
-					fontFamily: "BebasNeueRegular",
-					fontSize: 50,
-					background: "#fff",
-					border: "1px solid #DCDCDC",
-					borderRadius: "30px",
-					boxSizing: "border-box",
-					padding: 10,
-					boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-				}}
+				className="pokemon-input"
 				value={inputValue}
 				onChange={event => setInputValue(event.target.value)}
 				onKeyPress={event => {

@@ -17,11 +17,7 @@ const WinPopUp = ({ pokemon, close }: WinPopUpProps) => {
 			/>
 			<p>{pokemon.name} has been added to your pokédex!</p>
 			<div style={{ flexDirection: "row", alignSelf: "stretch", margin: 15 }}>
-				<ShareButton
-					onClick={() => {
-						return
-					}}
-				/>
+				<ShareButton shareText="I have caught todays pokemon on https://pokemondle.herokuapp.com/" />
 			</div>
 		</PopUpMenu>
 	)
