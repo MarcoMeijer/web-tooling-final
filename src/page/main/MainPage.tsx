@@ -33,17 +33,18 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	const makeGuess = (guessName: string) => {
 		if (health === 0) return
 		if (pokemon === undefined) return
+
 		if (comparePokemonName(guessName, pokemon.name)) {
-			if (health === 2) setPokemonVisible(true)
-			if (health === 1) setLosePopUpOpen(true)
-			setHealth(health - 1)
-		} else {
 			setPokemonVisible(true)
 			setWinPopUpOpen(true)
 			dispatchPokedex({
 				type: "catch",
 				pokemon: pokemonID,
 			})
+		} else {
+			if (health === 2) setPokemonVisible(true)
+			if (health === 1) setLosePopUpOpen(true)
+			setHealth(health - 1)
 		}
 	}
 
