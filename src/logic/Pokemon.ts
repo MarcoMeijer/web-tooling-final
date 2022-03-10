@@ -16,4 +16,11 @@ class Pokemon {
 	}
 }
 
+export const comparePokemonName = (userName: string, realName: string) => {
+	if (userName.toLowerCase() === realName.toLowerCase()) return true
+	if ((userName + "-m").toLowerCase() === realName.toLowerCase()) return true
+	if ((userName + "-f").toLowerCase() === realName.toLowerCase()) return true
+	return false
+}
+
 export default Pokemon

@@ -3,6 +3,7 @@ import LoadingIndicator from "../../component/LoadingIndicator"
 import PokeballBar from "../../component/PokeballBar"
 import { useFetch } from "../../hooks/useFetch"
 import usePokedex from "../../hooks/usePokedex"
+import { comparePokemonName } from "../../logic/Pokemon"
 import { PokemonData } from "../../logic/PokemonData"
 import NavigationBar from "../NavigationBar"
 import Pokedex from "../pokedex/Pokedex"
@@ -31,7 +32,8 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 
 	const makeGuess = (guessName: string) => {
 		if (health === 0) return
-		if (guessName.toLocaleLowerCase() !== pokemon?.name.toLocaleLowerCase()) {
+		if (pokemon === undefined) return
+		if (comparePokemonName(guessName, pokemon.name)) {
 			if (health === 2) setPokemonVisible(true)
 			if (health === 1) setLosePopUpOpen(true)
 			setHealth(health - 1)
