@@ -20,12 +20,10 @@ function getRandomInt(str: string, max: number): number {
 const App = () => {
 	const date = new Date()
 	const dateString = date.toLocaleDateString()
+
+
+	
 	const [pokemonID] = useState(getRandomInt(dateString, 151) + 1)
-	// const [theme, setTheme] = useState("light")
-	// const switchTheme = () => {
-	// 	setTheme(theme === "light" ? "dark" : "light")
-	// 	window.document.body.classList.toggle("dark-mode")
-	// }
 
 	return (
 		<div className="app">
