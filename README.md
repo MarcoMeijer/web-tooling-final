@@ -1,4 +1,4 @@
-[![Node.js CI](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml/badge.svg)](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml)
+[![Tests](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml/badge.svg)](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml)
 
 ## Node version
 
