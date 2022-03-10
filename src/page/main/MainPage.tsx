@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import LoadingIndicator from "../../component/LoadingIndicator"
 import PokeballBar from "../../component/PokeballBar"
 import { useFetch } from "../../hooks/useFetch"
@@ -22,6 +22,10 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 		`https://pokeapi.co/api/v2/pokemon/${pokemonID}`,
 	)
 
+	useEffect(() => {
+		localStorage.setItem("pokedex", JSON.stringify(pokedex))
+	}, [pokedex])
+
 	const switchPokedexOpen = () => setPokedexOpen(!pokedexOpen)
 
 	const makeGuess = (guessName: string) => {
@@ -40,19 +44,6 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 
 	return (
 		<div style={{ alignItems: "center" }}>
-			<div
-				style={{
-					position: "absolute",
-					width: 480,
-					top: 55,
-					bottom: 0,
-					left: pokedexOpen ? 0 : -480,
-					transition: "0.3s",
-				}}
-			>
-				<Pokedex close={() => setPokedexOpen(false)} pokedex={pokedex} />
-			</div>
-
 			{winPopUpOpen && pokemon && (
 				<WinPopUp pokemon={pokemon} close={() => setWinPopUpOpen(false)} />
 			)}
@@ -66,6 +57,11 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 				<LoadingIndicator />
 			) : (
 				<div style={{ flex: 1, alignSelf: "stretch", alignItems: "center" }}>
+					<Pokedex
+						isOpen={pokedexOpen}
+						close={() => setPokedexOpen(false)}
+						pokedex={pokedex}
+					/>
 					<img
 						className="pokemon-image"
 						src={pokemon?.sprites.front_default}

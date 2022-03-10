@@ -22,7 +22,9 @@ const pokedexReducer = (
 }
 
 const usePokedex = (): [PokedexData, Dispatch<PokedexAction>] => {
-	return useReducer(pokedexReducer, [])
+	const pokedexJson = localStorage.getItem("pokedex")
+	const initialState = JSON.parse(pokedexJson === null ? "[]" : pokedexJson)
+	return useReducer(pokedexReducer, initialState)
 }
 
 export default usePokedex
