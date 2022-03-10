@@ -2,6 +2,7 @@
 	"name": "web-tooling-final",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "http://marcomeijer.github.io/web-tooling-final",
 	"engines": {
 		"node": "^16",
 		"npm": "8.3.1"
@@ -28,7 +29,9 @@
 		"lint": "eslint src/App.tsx",
 		"prepare": "husky install",
 		"storybook": "start-storybook -p 6006 -s public",
-		"build-storybook": "build-storybook -s public"
+		"build-storybook": "build-storybook -s public",
+		"predeploy": "npm run build-storybook",
+		"deploy-storybook": "gh-pages -d storybook-static"
 	},
 	"browserslist": {
 		"production": [
@@ -62,6 +65,7 @@
 		"eslint-plugin-react": "^7.28.0",
 		"eslint-plugin-react-hooks": "^4.3.0",
 		"eslint-plugin-storybook": "^0.5.7",
+		"gh-pages": "^3.2.3",
 		"husky": "^7.0.4",
 		"prettier": "^2.5.1",
 		"webpack": "^5.70.0"
