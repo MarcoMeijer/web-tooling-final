@@ -1,19 +1,3 @@
-@font-face {
-	font-family: "BebasNeueRegular";
-	src: url(BebasNeue-Regular.ttf) format("truetype");
-
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "MontserratRegular";
-	src: url(Montserrat-Regular.ttf) format("truetype");
-
-	font-weight: normal;
-	font-style: normal;
-}
-
 .app {
 	margin: 0px;
 	width: 100%;

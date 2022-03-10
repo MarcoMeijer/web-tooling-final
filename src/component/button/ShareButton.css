@@ -16,5 +16,9 @@
 	color: #ffffff;
 	font-family: BebasNeueRegular;
 	font-size: 25px;
-	margin: 10px;
+	margin: 5px;
+}
+
+.share-button svg {
+	margin: 5px;
 }
