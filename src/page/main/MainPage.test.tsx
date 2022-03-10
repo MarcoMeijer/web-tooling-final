@@ -34,10 +34,18 @@ describe("main page", () => {
 		for (let i = 0; i < 3; i++) {
 			fireEvent.keyPress(input, { key: "Enter", code: 13, charCode: 13 })
 			expect(screen.queryByTestId("lose-popup")).not.toBeInTheDocument()
+			expect(screen.queryByTestId("pokemon-image")).toHaveAttribute(
+				"is-visible",
+				JSON.stringify(i == 2),
+			)
 		}
 
 		fireEvent.keyPress(input, { key: "Enter", code: 13, charCode: 13 })
 		expect(screen.queryByTestId("lose-popup")).toBeInTheDocument()
+		expect(screen.queryByTestId("pokemon-image")).toHaveAttribute(
+			"is-visible",
+			"true",
+		)
 	})
 	it("should add pokemon to pokedex after correct guess", () => {
 		useFetchSpy.mockImplementation(() => pokemon1)
@@ -48,20 +56,33 @@ describe("main page", () => {
 		expect(screen.queryByTestId("pokedex-pokemon")).not.toBeInTheDocument()
 
 		const input = screen.getByTestId("pokemon-input")
-		userEvent.paste(input, "not bulbasaur")
 
-		for (let i = 0; i < 3; i++) {
+		// make two incorrect guesses
+		userEvent.paste(input, "not bulbasaur")
+		for (let i = 0; i < 2; i++) {
 			fireEvent.keyPress(input, { key: "Enter", code: 13, charCode: 13 })
 			expect(screen.queryByTestId("lose-popup")).not.toBeInTheDocument()
 			expect(screen.queryByTestId("win-popup")).not.toBeInTheDocument()
 			expect(screen.queryByTestId("pokedex-pokemon")).not.toBeInTheDocument()
+			expect(screen.queryByTestId("pokemon-image")).toHaveAttribute(
+				"is-visible",
+				"false",
+			)
 		}
 
+		// guess correctly
 		userEvent.clear(input)
 		userEvent.paste(input, "bulbasaur")
 		fireEvent.keyPress(input, { key: "Enter", code: 13, charCode: 13 })
+
 		expect(screen.queryByTestId("lose-popup")).not.toBeInTheDocument()
 		expect(screen.queryByTestId("win-popup")).toBeInTheDocument()
 		expect(screen.queryAllByTestId("pokedex-pokemon")).toHaveLength(1)
+
+		// after it is guessed correctly it should always be visible
+		expect(screen.queryByTestId("pokemon-image")).toHaveAttribute(
+			"is-visible",
+			"true",
+		)
 	})
 })
