@@ -74,6 +74,7 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 					<PokeballBar healthLeft={health} />
 					<input
 						className="pokemon-input"
+						data-testid="pokemon-input"
 						value={inputValue}
 						onChange={event => setInputValue(event.target.value)}
 						onKeyPress={event => {

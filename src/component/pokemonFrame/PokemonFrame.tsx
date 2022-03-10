@@ -25,7 +25,7 @@ const PokemonFrame = ({ pokemon }: PokemonFrameProps) => {
 					<p className="ditto-question">?</p>
 				</div>
 			) : (
-				<img src={getSource(pokemon)} />
+				<img src={getSource(pokemon)} data-testid="pokedex-pokemon" />
 			)}
 		</div>
 	)

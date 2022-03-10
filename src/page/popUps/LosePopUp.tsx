@@ -9,7 +9,7 @@ type WinPopUpProps = {
 
 const LosePopUp = ({ pokemon, close }: WinPopUpProps) => {
 	return (
-		<PopUpMenu title="Too bad!" close={close}>
+		<PopUpMenu title="Too bad!" close={close} data-testid="lose-popup">
 			<img
 				src={pokemon.sprites.front_default}
 				style={{ width: 192, height: 192 }}

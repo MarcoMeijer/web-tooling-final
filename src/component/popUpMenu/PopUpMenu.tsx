@@ -6,10 +6,16 @@ type PopUpMenuProps = {
 	title: string
 	children: ReactChild | ReactChild[]
 	close: () => void
+	"data-testid"?: string
 }
 
-const PopUpMenu = ({ title, children, close }: PopUpMenuProps) => (
-	<div className="pop-up-center">
+const PopUpMenu = ({
+	title,
+	children,
+	close,
+	"data-testid": testid,
+}: PopUpMenuProps) => (
+	<div className="pop-up-center" data-testid={testid}>
 		<div className="background" />
 		<div className="pop-up-menu">
 			<ContainerHeader title={title} onClose={close} />

@@ -10,7 +10,7 @@ type WinPopUpProps = {
 
 const WinPopUp = ({ pokemon, close }: WinPopUpProps) => {
 	return (
-		<PopUpMenu title="Congratulations!" close={close}>
+		<PopUpMenu title="Congratulations!" close={close} data-testid="win-popup">
 			<img
 				src={pokemon.sprites.front_default}
 				style={{ width: 192, height: 192 }}
