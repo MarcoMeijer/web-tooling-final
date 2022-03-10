@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import LoadingIndicator from "../../component/LoadingIndicator"
 import PokeballBar from "../../component/PokeballBar"
 import { useFetch } from "../../hooks/useFetch"
 import { PokemonData } from "../../logic/PokemonData"
@@ -43,23 +44,36 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 			>
 				<Pokedex close={() => setPokedexOpen(false)} />
 			</div>
+
 			{winPopUpOpen && pokemon && (
 				<WinPopUp pokemon={pokemon} close={() => setWinPopUpOpen(false)} />
 			)}
 			{losePopUpOpen && pokemon && (
 				<LosePopUp pokemon={pokemon} close={() => setLosePopUpOpen(false)} />
 			)}
+
 			<NavigationBar switchPokedexOpen={switchPokedexOpen} />
-			<img className="pokemon-image" src={pokemon?.sprites.front_default} />
-			<PokeballBar healthLeft={health} />
-			<input
-				className="pokemon-input"
-				value={inputValue}
-				onChange={event => setInputValue(event.target.value)}
-				onKeyPress={event => {
-					if (event.key === "Enter") makeGuess(inputValue)
-				}}
-			></input>
+
+			{pokemon === undefined ? (
+				<LoadingIndicator />
+			) : (
+				<div style={{ flex: 1, alignSelf: "stretch", alignItems: "center" }}>
+					<img
+						className="pokemon-image"
+						src={pokemon?.sprites.front_default}
+						data-testid="pokemon-image"
+					/>
+					<PokeballBar healthLeft={health} />
+					<input
+						className="pokemon-input"
+						value={inputValue}
+						onChange={event => setInputValue(event.target.value)}
+						onKeyPress={event => {
+							if (event.key === "Enter") makeGuess(inputValue)
+						}}
+					/>
+				</div>
+			)}
 		</div>
 	)
 }
