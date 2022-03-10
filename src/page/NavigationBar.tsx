@@ -41,7 +41,7 @@ const NavigationBar = ({ switchPokedexOpen }: NavigationBarProps) => {
 					textAlign: "center",
 				}}
 			>
-				{"Who's that Pokémon?"}
+				{"POKÉMONDLE"}
 			</p>
 			<svg
 				width="30"

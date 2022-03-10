@@ -51,7 +51,11 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	return (
 		<div style={{ alignItems: "center" }}>
 			{winPopUpOpen && pokemon && (
-				<WinPopUp pokemon={pokemon} close={() => setWinPopUpOpen(false)} />
+				<WinPopUp
+					pokemon={pokemon}
+					close={() => setWinPopUpOpen(false)}
+					healthLeft={health}
+				/>
 			)}
 			{losePopUpOpen && pokemon && (
 				<LosePopUp pokemon={pokemon} close={() => setLosePopUpOpen(false)} />
