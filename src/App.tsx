@@ -20,9 +20,6 @@ function getRandomInt(str: string, max: number): number {
 const App = () => {
 	const date = new Date()
 	const dateString = date.toLocaleDateString()
-
-
-	
 	const [pokemonID] = useState(getRandomInt(dateString, 151) + 1)
 
 	return (
