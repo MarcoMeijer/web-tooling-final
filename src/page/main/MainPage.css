@@ -1,8 +1,11 @@
 .pokemon-image {
 	width: 480px;
 	height: 480px;
-	filter: brightness(0);
 	pointer-events: none;
+}
+
+.pokemon-image[is-visible="false"] {
+	filter: brightness(0);
 }
 
 .pokemon-input {

@@ -14,6 +14,7 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	const [pokedexOpen, setPokedexOpen] = useState(false)
 	const [winPopUpOpen, setWinPopUpOpen] = useState(false)
 	const [losePopUpOpen, setLosePopUpOpen] = useState(false)
+	const [pokemonVisible, setPokemonVisible] = useState(false)
 	const [inputValue, setInputValue] = useState("")
 	const [health, setHealth] = useState(4)
 	const [pokedex, dispatchPokedex] = usePokedex()
@@ -31,9 +32,11 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	const makeGuess = (guessName: string) => {
 		if (health === 0) return
 		if (guessName.toLocaleLowerCase() !== pokemon?.name.toLocaleLowerCase()) {
+			if (health === 2) setPokemonVisible(true)
 			if (health === 1) setLosePopUpOpen(true)
 			setHealth(health - 1)
 		} else {
+			setPokemonVisible(true)
 			setWinPopUpOpen(true)
 			dispatchPokedex({
 				type: "catch",
@@ -66,6 +69,7 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 						className="pokemon-image"
 						src={pokemon?.sprites.front_default}
 						data-testid="pokemon-image"
+						is-visible={pokemonVisible ? "true" : "false"}
 					/>
 					<PokeballBar healthLeft={health} />
 					<input
