@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import LoadingIndicator from "../../component/LoadingIndicator"
 import PokeballBar from "../../component/PokeballBar"
 import { useFetch } from "../../hooks/useFetch"
+import usePokedex from "../../hooks/usePokedex"
 import { PokemonData } from "../../logic/PokemonData"
 import NavigationBar from "../NavigationBar"
 import Pokedex from "../pokedex/Pokedex"
@@ -15,6 +16,7 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 	const [losePopUpOpen, setLosePopUpOpen] = useState(false)
 	const [inputValue, setInputValue] = useState("")
 	const [health, setHealth] = useState(4)
+	const [pokedex, dispatchPokedex] = usePokedex()
 
 	const pokemon = useFetch<PokemonData>(
 		`https://pokeapi.co/api/v2/pokemon/${pokemonID}`,
@@ -27,7 +29,13 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 		if (guessName.toLocaleLowerCase() !== pokemon?.name.toLocaleLowerCase()) {
 			if (health === 1) setLosePopUpOpen(true)
 			setHealth(health - 1)
-		} else setWinPopUpOpen(true)
+		} else {
+			setWinPopUpOpen(true)
+			dispatchPokedex({
+				type: "catch",
+				pokemon: pokemonID,
+			})
+		}
 	}
 
 	return (
@@ -42,7 +50,7 @@ const MainPage = ({ pokemonID }: { pokemonID: number }) => {
 					transition: "0.3s",
 				}}
 			>
-				<Pokedex close={() => setPokedexOpen(false)} />
+				<Pokedex close={() => setPokedexOpen(false)} pokedex={pokedex} />
 			</div>
 
 			{winPopUpOpen && pokemon && (
