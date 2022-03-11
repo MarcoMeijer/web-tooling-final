@@ -10,7 +10,7 @@ All pokémons that you guessed correctly are shown in your "pokédex".
 ## Links
 
 View the website on https://pokemondle.herokuapp.com/ \
-View the storybook on https://marcomeijer.github.io/web-tooling-final \
+View the storybook on https://marcomeijer.github.io/web-tooling-final/
 
 ## Node version
 
