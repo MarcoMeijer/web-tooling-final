@@ -11,12 +11,14 @@ const useFetchSpy = jest.spyOn(useFetchImports, "useFetch")
 describe("main page", () => {
 	it("should show a loading state when the data hasn't arrived yet", () => {
 		useFetchSpy.mockImplementation(() => undefined)
+		localStorage.clear()
 		render(<MainPage pokemonID={1} />)
 
 		expect(screen.queryByTestId("loading-indicator")).toBeInTheDocument()
 	})
 	it("should show data when it has arrived.", () => {
 		useFetchSpy.mockImplementation(() => pokemon1)
+		localStorage.clear()
 		render(<MainPage pokemonID={1} />)
 
 		expect(screen.queryByTestId("loading-indicator")).not.toBeInTheDocument()
@@ -24,6 +26,7 @@ describe("main page", () => {
 	})
 	it("should lose after four incorrect guesses", () => {
 		useFetchSpy.mockImplementation(() => pokemon1)
+		localStorage.clear()
 		render(<MainPage pokemonID={1} />)
 
 		expect(screen.queryByTestId("lose-popup")).not.toBeInTheDocument()
@@ -49,6 +52,7 @@ describe("main page", () => {
 	})
 	it("should add pokemon to pokedex after correct guess", () => {
 		useFetchSpy.mockImplementation(() => pokemon1)
+		localStorage.clear()
 		render(<MainPage pokemonID={1} />)
 
 		expect(screen.queryByTestId("lose-popup")).not.toBeInTheDocument()
