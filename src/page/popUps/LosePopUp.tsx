@@ -3,6 +3,7 @@ import ShareButton from "../../component/button/ShareButton"
 import Countdown from "../../component/countdown/Countdown"
 import PopUpMenu from "../../component/popUpMenu/PopUpMenu"
 import { PokemonData } from "../../logic/PokemonData"
+import { getDaysSinceStart } from "../../logic/TimeLogic"
 
 type WinPopUpProps = {
 	pokemon: PokemonData
@@ -10,7 +11,7 @@ type WinPopUpProps = {
 }
 
 const LosePopUp = ({ pokemon, close }: WinPopUpProps) => {
-	const message = `Pokémondle #1 0/4\n⚫⚫⚫⚫\nhttps://pokemondle.herokuapp.com/`
+	const message = `Pokémondle #${getDaysSinceStart()} 0/4\n⚫⚫⚫⚫\nhttps://pokemondle.herokuapp.com/`
 	return (
 		<PopUpMenu title="Too bad!" close={close} data-testid="lose-popup">
 			<img

@@ -3,6 +3,7 @@ import ShareButton from "../../component/button/ShareButton"
 import Countdown from "../../component/countdown/Countdown"
 import PopUpMenu from "../../component/popUpMenu/PopUpMenu"
 import { PokemonData } from "../../logic/PokemonData"
+import { getDaysSinceStart } from "../../logic/TimeLogic"
 
 type WinPopUpProps = {
 	pokemon: PokemonData
@@ -15,7 +16,7 @@ const WinPopUp = ({ pokemon, healthLeft, close }: WinPopUpProps) => {
 	for (let i = 2; i <= 4; i++) {
 		healthBar += healthLeft >= i ? "🔴" : "⚫"
 	}
-	const message = `Pokémondle #1 ${healthLeft}/4\n${healthBar}\nhttps://pokemondle.herokuapp.com/`
+	const message = `Pokémondle #${getDaysSinceStart()} ${healthLeft}/4\n${healthBar}\nhttps://pokemondle.herokuapp.com/`
 	return (
 		<PopUpMenu title="Congratulations!" close={close} data-testid="win-popup">
 			<img
