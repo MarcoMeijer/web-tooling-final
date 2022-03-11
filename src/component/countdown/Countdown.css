@@ -1,0 +1,17 @@
+.countdown {
+	align-items: center;
+	flex: 1;
+}
+
+.countdown .next {
+	font-family: MontserratRegular;
+	font-size: 20px;
+	color: #808080;
+	margin: 0;
+}
+
+.countdown .timer {
+	font-family: MontserratRegular;
+	font-size: 22px;
+	margin: 0;
+}
