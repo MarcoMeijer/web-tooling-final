@@ -1,9 +1,16 @@
 [![Tests](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml/badge.svg)](https://github.com/MarcoMeijer/web-tooling-final/actions/workflows/node.js.yml)
 
-## Websites
+## Pokémondle
 
-View the website on https://pokemondle.herokuapp.com/
-View the storybook on https://marcomeijer.github.io/web-tooling-final
+Pokémondle is a short game inspired by "Who's that pokémon" and wordle.\
+Each day there is a new pokémon to guess, and you have 4 tries to guess the name of that pokémon.\
+The first few guesses only the silhouette is shown, but on the lass guess the colors are revealed.\
+All pokémons that you guessed correctly are shown in your "pokédex".\
+
+## Links
+
+View the website on https://pokemondle.herokuapp.com/\
+View the storybook on https://marcomeijer.github.io/web-tooling-final\
 
 ## Node version
 
